@@ -1,0 +1,746 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+  background: #ecedee;
+  color: #222;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+  background: #79a896;
+  color: #222;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 2.5rem;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.nav {
+  display: flex;
+  gap: 2rem;
+}
+.nav a {
+  color: #222;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+.nav a.active {
+  background: none;
+  color: inherit;
+}
+
+.nav a:hover {
+  background: #cfd8dc;
+  color: #1976d2;
+}
+
+.nav-logout-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 1.5;
+}
+
+.nav-logout-btn:hover {
+  background: #c82333;
+}
+
+.footer {
+  width: 100%;
+  background: #79a896;
+  color: #222;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
+  font-size: 1rem;
+  margin-top: auto;
+  box-sizing: border-box;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2.5rem;
+}
+
+.footer-links, .footer-social {
+  display: flex;
+  gap: 1.2rem;
+}
+.footer a {
+  color: #222;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer a:hover {
+  color: #1976d2;
+}
+
+.main-content {
+  flex: 1 0 auto;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 60px;
+}
+
+.content-container {
+  width: 100%;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  box-sizing: border-box;
+}
+
+.slider-container {
+  width: 100%;
+  margin: 2rem 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.slider {
+  width: 100%;
+  height: 70vh;
+  min-height: 350px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(25, 118, 210, 0.08);
+  border-radius: 0;
+}
+
+.slider-img {
+  width: 100%;
+  height: 70vh;
+  min-height: 350px;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: opacity 0.5s;
+  border-radius: 0;
+}
+
+.slider-img.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .slider, .slider-img {
+    height: 40vh;
+    min-height: 180px;
+  }
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .header-content, .footer-content {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+.page {
+  width: 100%;
+  margin: 0 auto;
+  padding: 2.5rem 0.5rem;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 350px;
+}
+
+form > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+form label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+form input {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: 1px solid #bdbdbd;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+  box-sizing: border-box;
+}
+
+form input:focus {
+  border: 1.5px solid #1976d2;
+}
+
+button {
+  border-radius: 6px;
+  border: none;
+  padding: 0.6em 1.5em;
+  font-size: 1em;
+  font-weight: 600;
+  font-family: inherit;
+  background-color: #1976d2;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.5rem;
+  width: auto;
+  min-width: 120px;
+  align-self: center;
+}
+
+button:hover {
+  background-color: #1565c0;
+}
+
+.page h2 {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.page p {
+  text-align: center;
+  width: 100%;
+}
+
+h2 {
+  color: #1976d2;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 700px) {
+  .header, .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 1.2rem;
+  }
+  .footer {
+    font-size: 0.95rem;
+  }
+  .slider, .slider-img {
+    height: 28vh;
+    min-height: 120px;
+  }
+  .page {
+    padding: 1.2rem 0.5rem;
+    margin: 1.2rem 0 2rem 0;
+  }
+}
+
+.form-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(25, 118, 210, 0.10);
+  padding: 2.5rem 2rem 2rem 2rem;
+  max-width: 400px;
+  width: 100%;
+  margin: 2.5rem auto 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .form-card {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+}
+
+/* Weather Prediction Box Styles */
+.weather-prediction-box {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.weather-prediction-box h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #1976d2;
+  font-size: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.city-select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+  transition: border-color 0.2s;
+}
+
+.city-select:focus {
+  outline: none;
+  border-color: #1976d2;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 0.8rem;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-bottom: 1.5rem;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #1565c0;
+}
+
+.submit-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.date-selection {
+  margin-bottom: 1.5rem;
+}
+
+.date-selection label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.date-options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.date-btn {
+  flex: 1;
+  padding: 0.6rem;
+  border: 2px solid #e0e0e0;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.date-btn:hover:not(:disabled) {
+  border-color: #1976d2;
+  background: #f5f5f5;
+}
+
+.date-btn.active {
+  background: #e3f2fd;
+  color: #333;
+  border-color: #1976d2;
+}
+
+.date-btn:disabled {
+  background: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+  border-color: #ddd;
+}
+
+.weather-info {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.weather-info h4 {
+  margin: 0 0 1rem 0;
+  color: #333;
+  font-size: 1.3rem;
+}
+
+.temperature {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1976d2;
+  margin-bottom: 0.5rem;
+}
+
+.condition {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.wind-speed {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.logout-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+  transition: background 0.2s;
+}
+
+.logout-btn:hover {
+  background: #c82333;
+}
+
+/* Weather-based Dashboard Backgrounds */
+.dashboard-sunny {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #fff8dc 100%);
+  position: relative;
+}
+
+.dashboard-sunny::before {
+  content: '☀️';
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  font-size: 4rem;
+  opacity: 0.3;
+  z-index: 1;
+  animation: float 3s ease-in-out infinite;
+}
+
+.dashboard-cloudy {
+  background: linear-gradient(135deg, #b0c4de 0%, #d3d3d3 50%, #f0f8ff 100%);
+  position: relative;
+}
+
+.dashboard-cloudy::before {
+  content: '☁️';
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  font-size: 4rem;
+  opacity: 0.4;
+  z-index: 1;
+  animation: float 4s ease-in-out infinite;
+}
+
+.dashboard-rainy {
+  background: linear-gradient(135deg, #4682b4 0%, #5f9ea0 50%, #b0e0e6 100%);
+  position: relative;
+}
+
+.dashboard-rainy::before {
+  content: '🌧️';
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  font-size: 4rem;
+  opacity: 0.4;
+  z-index: 1;
+  animation: float 2s ease-in-out infinite;
+}
+
+.dashboard-clear {
+  background: linear-gradient(135deg, #87ceeb 0%, #b0e0e6 50%, #f0f8ff 100%);
+  position: relative;
+}
+
+.dashboard-clear::before {
+  content: '🌤️';
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  font-size: 4rem;
+  opacity: 0.3;
+  z-index: 1;
+  animation: float 3.5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Weather Prediction Box Styles */
+.weather-prediction-box {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.weather-prediction-box h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #1976d2;
+  font-size: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.city-select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+  transition: border-color 0.2s;
+}
+
+.city-select:focus {
+  outline: none;
+  border-color: #1976d2;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 0.8rem;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-bottom: 1.5rem;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #1565c0;
+}
+
+.submit-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.date-selection {
+  margin-bottom: 1.5rem;
+}
+
+.date-selection label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.date-options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.date-btn {
+  flex: 1;
+  padding: 0.6rem;
+  border: 2px solid #e0e0e0;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.date-btn:hover:not(:disabled) {
+  border-color: #1976d2;
+  background: #f5f5f5;
+}
+
+.date-btn.active {
+  background: #e3f2fd;
+  color: #333;
+  border-color: #1976d2;
+}
+
+.date-btn:disabled {
+  background: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+  border-color: #ddd;
+}
+
+.weather-info {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.weather-info h4 {
+  margin: 0 0 1rem 0;
+  color: #333;
+  font-size: 1.3rem;
+}
+
+.temperature {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1976d2;
+  margin-bottom: 0.5rem;
+}
+
+.condition {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.wind-speed {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.logout-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+  transition: background 0.2s;
+}
+
+.logout-btn:hover {
+  background: #c82333;
+}
+
+/* Ensure content remains readable on weather backgrounds */
+.dashboard-sunny .weather-prediction-box,
+.dashboard-cloudy .weather-prediction-box,
+.dashboard-rainy .weather-prediction-box,
+.dashboard-clear .weather-prediction-box {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dashboard-sunny .page,
+.dashboard-cloudy .page,
+.dashboard-rainy .page,
+.dashboard-clear .page {
+  color: #333;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 600px) {
+  .weather-prediction-box {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .date-options {
+    flex-direction: column;
+  }
+  
+  .temperature {
+    font-size: 2rem;
+  }
+}
