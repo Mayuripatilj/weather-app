@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # weather-app
 =======
 # Weather Prediction App 🌤️
@@ -301,3 +302,6 @@ If you have any questions or need help, please open an issue on GitHub or contac
 
 **⭐ Star this repository if you found it helpful!** 
 >>>>>>> 939803e (first commit)
+=======
+# weather-app
+>>>>>>> 221c8c46ae082026b5959b4a0d2962430834adb2
